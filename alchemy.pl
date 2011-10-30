@@ -45,6 +45,8 @@ until ( $exit eq "yes" ) {
 	LOOP: foreach $key1 (sort keys %elements) {
 		foreach $key2 (sort keys %elements) {
 			next if ( $key1 gt $key2 );
+			next if ( $key1 =~ m/\*/ );
+			next if ( $key2 =~ m/\*/ );
 			unless ( defined($results{$key1}{$key2}) ) {
 				$element1 = $key1;
 				$element2 = $key2;
